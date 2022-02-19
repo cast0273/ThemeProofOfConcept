@@ -2,7 +2,10 @@ import * as React from 'react'
 import { Platform, StyleSheet, Text, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { shadowColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
+import {
+  color,
+  shadowColor
+} from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -22,7 +25,9 @@ export default function App () {
       <StatusBar style='auto' />
 
       <TabBar.Navigator
-        screenOptions={({ route }) => ({
+        screenOptions={({ navigation, route }) => ({
+          headerTitleAlign: 'left',
+          headerStyle: { backgroundColor: '#395E66', height: 136 },
           tabBarIcon: ({ focused, color, size }) => {
             let iconName
             if (route.name === 'MarketPlace') {
@@ -51,7 +56,36 @@ export default function App () {
             shadowOpacity: 0.14,
             shadowRadius: 34,
             elevation: 16
-          }
+          },
+          headerTitle: props => (
+            <View
+              style={{
+                display: 'flex',
+                justifyContent: 'flex-start'
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 34,
+                  fontWeight: '600',
+                  color: '#FFFFFF',
+                  paddingBottom: 7
+                }}
+              >
+                {props.children}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 14,
+                  fontWeight: '400',
+                  color: '#FFFFFFA8',
+                  paddingBottom: 17
+                }}
+              >
+                120 Robinson Rd, Ottawa, ON
+              </Text>
+            </View>
+          )
         })}
       >
         <TabBar.Screen name='MarketPlace' component={MarketPlace} />

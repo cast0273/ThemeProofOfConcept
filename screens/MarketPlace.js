@@ -1,10 +1,12 @@
 import * as React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 
 export default function MarketPlace () {
   return (
-    <View>
-      <Text>MarketPlace</Text>
-    </View>
+    <SafeAreaView>
+      <View>
+        <Text>MarketPlace</Text>
+      </View>
+    </SafeAreaView>
   )
 }

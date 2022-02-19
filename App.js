@@ -3,9 +3,12 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import {
-  color,
-  shadowColor
-} from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes'
+  useFonts,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold
+} from '@expo-google-fonts/roboto'
+import AppLoading from 'expo-app-loading'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -18,53 +21,67 @@ import Profile from './screens/Profile'
 //  **cannot use safeAreaView outside TabBar**
 
 export default function App () {
+  let [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold
+  })
+
   const TabBar = createBottomTabNavigator()
 
-  return (
-    <NavigationContainer>
-      <StatusBar style='auto' />
+  if (!fontsLoaded) {
+    return <AppLoading />
+  } else {
+    return (
+      <NavigationContainer>
+        <StatusBar style='auto' />
 
-      <TabBar.Navigator
-        screenOptions={({ navigation, route }) => ({
-          headerShown: false,
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName
-            if (route.name === 'MarketPlace') {
-              iconName = 'store'
-            } else if (route.name === 'NewsFeed') {
-              iconName = 'newspaper'
-            } else if (route.name === 'Notifications') {
-              iconName = 'bell'
-            } else if (route.name === 'Profile') {
-              iconName = 'account'
+        <TabBar.Navigator
+          screenOptions={({ navigation, route }) => ({
+            headerShown: false,
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName
+              if (route.name === 'MarketPlace') {
+                iconName = 'store'
+              } else if (route.name === 'NewsFeed') {
+                iconName = 'newspaper'
+              } else if (route.name === 'Notifications') {
+                iconName = 'bell'
+              } else if (route.name === 'Profile') {
+                iconName = 'account'
+              }
+              return (
+                <MaterialCommunityIcons
+                  name={iconName}
+                  size={32}
+                  color={color}
+                />
+              )
+            },
+            tabBarActiveTintColor: '#395E66',
+            tabBarInactiveTintColor: '#395E6654',
+            tabBarShowLabel: false,
+            tabBarStyle: {
+              height: 84,
+              paddingTop: 17,
+              paddingBottom: Platform.OS === 'ios' ? 34 : 17,
+              paddingHorizontal: 17,
+              shadowColor: 'black',
+              shadowOffset: { width: 0, height: -8 },
+              shadowOpacity: 0.14,
+              shadowRadius: 34,
+              elevation: 16
             }
-            return (
-              <MaterialCommunityIcons name={iconName} size={32} color={color} />
-            )
-          },
-          tabBarActiveTintColor: '#395E66',
-          tabBarInactiveTintColor: '#395E6654',
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            height: 84,
-            paddingTop: 17,
-            paddingBottom: Platform.OS === 'ios' ? 34 : 17,
-            paddingHorizontal: 17,
-            shadowColor: 'black',
-            shadowOffset: { width: 0, height: -8 },
-            shadowOpacity: 0.14,
-            shadowRadius: 34,
-            elevation: 16
-          }
-        })}
-      >
-        <TabBar.Screen name='MarketPlace' component={MarketPlace} />
-        <TabBar.Screen name='NewsFeed' component={NewsFeed} />
-        <TabBar.Screen name='Notifications' component={Notifications} />
-        <TabBar.Screen name='Profile' component={Profile} />
-      </TabBar.Navigator>
-    </NavigationContainer>
-  )
+          })}
+        >
+          <TabBar.Screen name='MarketPlace' component={MarketPlace} />
+          <TabBar.Screen name='NewsFeed' component={NewsFeed} />
+          <TabBar.Screen name='Notifications' component={Notifications} />
+          <TabBar.Screen name='Profile' component={Profile} />
+        </TabBar.Navigator>
+      </NavigationContainer>
+    )
+  }
 }
 
 const styles = StyleSheet.create({

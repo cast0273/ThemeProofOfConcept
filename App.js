@@ -26,8 +26,7 @@ export default function App () {
 
       <TabBar.Navigator
         screenOptions={({ navigation, route }) => ({
-          headerTitleAlign: 'left',
-          headerStyle: { backgroundColor: '#395E66', height: 136 },
+          headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName
             if (route.name === 'MarketPlace') {
@@ -56,36 +55,7 @@ export default function App () {
             shadowOpacity: 0.14,
             shadowRadius: 34,
             elevation: 16
-          },
-          headerTitle: props => (
-            <View
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-start'
-              }}
-            >
-              <Text
-                style={{
-                  fontSize: 34,
-                  fontWeight: '600',
-                  color: '#FFFFFF',
-                  paddingBottom: 7
-                }}
-              >
-                {props.children}
-              </Text>
-              <Text
-                style={{
-                  fontSize: 14,
-                  fontWeight: '400',
-                  color: '#FFFFFFA8',
-                  paddingBottom: 17
-                }}
-              >
-                120 Robinson Rd, Ottawa, ON
-              </Text>
-            </View>
-          )
+          }
         })}
       >
         <TabBar.Screen name='MarketPlace' component={MarketPlace} />

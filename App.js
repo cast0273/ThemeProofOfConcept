@@ -37,6 +37,7 @@ export default function App () {
         <StatusBar style='auto' />
 
         <TabBar.Navigator
+          initialRouteName='NewsFeed'
           screenOptions={({ navigation, route }) => ({
             headerShown: false,
             tabBarIcon: ({ focused, color, size }) => {

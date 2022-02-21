@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   Pressable,
   Alert,
-  Platform
+  Platform,
+  Image
 } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
@@ -24,6 +25,11 @@ export default function NewsFeed () {
       'This is where we would redirect to announcements screen',
       [{ text: 'OK', onPress: () => console.log('OK Pressed') }]
     )
+  }
+  function clickPost () {
+    Alert.alert('Notice', `This is where we would redirect to post's screen`, [
+      { text: 'OK', onPress: () => console.log('OK Pressed') }
+    ])
   }
 
   return (
@@ -74,6 +80,7 @@ export default function NewsFeed () {
           borderTopLeftRadius: 27
         }}
       >
+        {/* //announcements */}
         <Pressable
           id='announcements'
           onPress={clickAnnouncements}
@@ -85,7 +92,8 @@ export default function NewsFeed () {
             paddingHorizontal: 22,
             paddingVertical: 17,
             marginHorizontal: 17,
-            marginVertical: 17,
+            marginTop: 17,
+            marginBottom: 13,
 
             borderRadius: 24,
             shadowColor: 'black',
@@ -138,6 +146,76 @@ export default function NewsFeed () {
               size={36}
               color='black'
             />
+          </View>
+        </Pressable>
+        {/* //post */}
+        <Pressable
+          id='post'
+          onPress={clickPost}
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#FFFFFF',
+            paddingHorizontal: 17,
+            paddingTop: 17,
+            paddingBottom: 22,
+            marginHorizontal: 17,
+            marginVertical: 9,
+
+            borderRadius: 24,
+            shadowColor: 'black',
+            shadowOffset: { width: 0, height: -8 },
+            shadowOpacity: 0.14,
+            shadowRadius: 34,
+            elevation: 16
+          }}
+        >
+          <View
+            id='postHeader'
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between'
+            }}
+          >
+            <View
+              id='userPic-Name'
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+              }}
+            >
+              <Image
+                style={{ width: 45, height: 45, borderRadius: 12 }}
+                source={{
+                  uri:
+                    'https://images.unsplash.com/photo-1598411072028-c4642d98352c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80'
+                }}
+              />
+              <Text
+                id='userName'
+                style={{
+                  fontSize: 17,
+                  fontFamily: 'Roboto_500Medium',
+                  color: '#191919',
+                  marginHorizontal: 8
+                }}
+              >
+                Adam Grantson
+              </Text>
+            </View>
+
+            <Text
+              id='timePosted'
+              style={{
+                fontSize: 14,
+                fontFamily: 'Roboto_400Regular',
+                color: '#191919A8'
+              }}
+            >
+              30m
+            </Text>
           </View>
         </Pressable>
       </View>

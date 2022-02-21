@@ -66,7 +66,14 @@ export default function NewsFeed () {
           </Text>
         </Pressable>
       </View>
-      <View id='feed' style={{ backgroundColor: '#FFFFFF' }}>
+      <View
+        id='feed'
+        style={{
+          backgroundColor: '#FFFFFF',
+          borderTopRightRadius: 27,
+          borderTopLeftRadius: 27
+        }}
+      >
         <Pressable
           id='announcements'
           onPress={clickAnnouncements}

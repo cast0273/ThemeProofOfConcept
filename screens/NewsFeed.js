@@ -311,6 +311,155 @@ export default function NewsFeed () {
             </View>
           </View>
         </Pressable>
+
+        {/* //post+pic */}
+        <Pressable
+          id='postPicture'
+          onPress={clickPost}
+          style={{
+            flexDirection: 'column',
+            alignItems: 'center',
+            backgroundColor: '#FFFFFF',
+            paddingHorizontal: 17,
+            paddingTop: 17,
+            paddingBottom: 22,
+            marginHorizontal: 17,
+            marginVertical: 9,
+
+            borderRadius: 24,
+            shadowColor: 'black',
+            shadowOffset: { width: 0, height: -8 },
+            shadowOpacity: 0.14,
+            shadowRadius: 34,
+            elevation: 16
+          }}
+        >
+          <View
+            id='postHeader'
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              width: '100%'
+            }}
+          >
+            <View
+              id='userPic-Name'
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center'
+              }}
+            >
+              <Image
+                style={{ width: 45, height: 45, borderRadius: 12 }}
+                source={{
+                  uri:
+                    'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+                }}
+              />
+              <Text
+                id='userName'
+                style={{
+                  fontSize: 17,
+                  fontFamily: 'Roboto_500Medium',
+                  color: '#191919',
+                  marginHorizontal: 8
+                }}
+              >
+                Adam Grantson
+              </Text>
+            </View>
+
+            <Text
+              id='timePosted'
+              style={{
+                fontSize: 14,
+                fontFamily: 'Roboto_400Regular',
+                color: '#191919A8'
+              }}
+            >
+              30m
+            </Text>
+          </View>
+
+          <Text
+            id='postMessage'
+            style={{
+              fontSize: 17,
+              fontFamily: 'Roboto_400Regular',
+              marginTop: 12
+            }}
+          >
+            Just went for a walk outside and found a pair of mittens. Does
+            anybody recall losing them?
+          </Text>
+
+          <Image
+            style={{
+              width: '100%',
+              height: 204,
+              borderRadius: 16,
+              marginTop: 12
+            }}
+            source={{
+              uri:
+                'https://www.mscareergirl.com/wp-content/uploads/2017/07/pexels-photo1-620x400.jpg'
+            }}
+          />
+
+          <View
+            id='actions'
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              width: '100%',
+              marginTop: 17
+            }}
+          >
+            <View
+              id='like'
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
+              <MaterialCommunityIcons
+                name='heart-outline'
+                size={24}
+                color='#191919'
+              />
+              <Text
+                style={{
+                  fontSize: 17,
+                  fontFamily: 'Roboto_400Regular',
+                  marginLeft: 8,
+                  marginRight: 17
+                }}
+              >
+                12
+              </Text>
+            </View>
+
+            <View
+              id='comment'
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
+              <MaterialCommunityIcons
+                name='message-outline'
+                size={24}
+                color='#191919'
+              />
+              <Text
+                style={{
+                  fontSize: 17,
+                  fontFamily: 'Roboto_400Regular',
+                  marginLeft: 8,
+                  marginRight: 17
+                }}
+              >
+                8
+              </Text>
+            </View>
+          </View>
+        </Pressable>
       </View>
     </SafeAreaView>
   )

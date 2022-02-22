@@ -7,12 +7,11 @@ import {
   Pressable,
   Alert,
   Platform,
-  Image
+  Image,
+  FlatList
 } from 'react-native'
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
-import { FlatList } from 'react-native'
-import { Roboto_400Regular } from '@expo-google-fonts/roboto'
 
 const posts = [
   {
@@ -51,6 +50,14 @@ export default function NewsFeed () {
     ])
   }
 
+  function clickFab () {
+    Alert.alert(
+      'Notice',
+      `This is where we would redirect to create new post screen`,
+      [{ text: 'OK', onPress: () => console.log('OK Pressed') }]
+    )
+  }
+
   return (
     <SafeAreaView style={{ backgroundColor: '#395E66' }}>
       {!posts && (
@@ -77,317 +84,27 @@ export default function NewsFeed () {
           renderItem={({ item }) => {
             return (
               <Post
+                avatar={item.avatar}
                 name={item.name}
-                // id={post.id}
-                // avatar={post.avatar}
-                // name={post.name}
-                // timestamp={post.timestamp}
-                // message={post.message}
+                timestamp={item.timestamp}
+                message={item.message}
+                picture={item.picture}
+                likes={item.likes}
+                comments={item.comments}
               />
             )
           }}
-          ListFooterComponent={
-            <View
-              style={{ paddingVertical: useBottomTabBarHeight + 34 }}
-            ></View>
-          }
+          ListFooterComponent={<View style={{ paddingTop: 17 }}></View>}
         />
       )}
 
-      <View>
-        {/* //post */}
-        <Pressable
-          id='post'
-          onPress={clickPost}
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            backgroundColor: '#FFFFFF',
-            paddingHorizontal: 17,
-            paddingTop: 17,
-            paddingBottom: 22,
-            marginHorizontal: 17,
-            marginVertical: 9,
-
-            borderRadius: 24,
-            shadowColor: 'black',
-            shadowOffset: { width: 0, height: -8 },
-            shadowOpacity: 0.14,
-            shadowRadius: 34,
-            elevation: 16
-          }}
-        >
-          <View
-            id='postHeader'
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%'
-            }}
-          >
-            <View
-              id='userPic-Name'
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                style={{ width: 45, height: 45, borderRadius: 12 }}
-                source={{
-                  uri:
-                    'https://images.unsplash.com/photo-1598411072028-c4642d98352c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80'
-                }}
-              />
-              <Text
-                id='userName'
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'Roboto_500Medium',
-                  color: '#191919',
-                  marginHorizontal: 8
-                }}
-              >
-                Adam Grantson
-              </Text>
-            </View>
-
-            <Text
-              id='timePosted'
-              style={{
-                fontSize: 14,
-                fontFamily: 'Roboto_400Regular',
-                color: '#191919A8'
-              }}
-            >
-              30m
-            </Text>
-          </View>
-
-          <Text
-            id='postMessage'
-            style={{
-              fontSize: 17,
-              fontFamily: 'Roboto_400Regular',
-              marginTop: 12,
-              width: '100%'
-            }}
-          >
-            Just went for a walk outside and found a pair of mittens. Does
-            anybody recall losing them?
-          </Text>
-
-          <View
-            id='actions'
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              width: '100%',
-              marginTop: 17
-            }}
-          >
-            <View
-              id='like'
-              style={{ flexDirection: 'row', alignItems: 'center' }}
-            >
-              <MaterialCommunityIcons
-                name='heart-outline'
-                size={24}
-                color='#191919'
-              />
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'Roboto_400Regular',
-                  marginLeft: 8,
-                  marginRight: 17
-                }}
-              >
-                12
-              </Text>
-            </View>
-
-            <View
-              id='comment'
-              style={{ flexDirection: 'row', alignItems: 'center' }}
-            >
-              <MaterialCommunityIcons
-                name='message-outline'
-                size={24}
-                color='#191919'
-              />
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'Roboto_400Regular',
-                  marginLeft: 8,
-                  marginRight: 17
-                }}
-              >
-                8
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-
-        {/* //post+pic */}
-        <Pressable
-          id='postPicture'
-          onPress={clickPost}
-          style={{
-            flexDirection: 'column',
-            alignItems: 'center',
-            backgroundColor: '#FFFFFF',
-            paddingHorizontal: 17,
-            paddingTop: 17,
-            paddingBottom: 22,
-            marginHorizontal: 17,
-            marginVertical: 9,
-
-            borderRadius: 24,
-            shadowColor: 'black',
-            shadowOffset: { width: 0, height: -8 },
-            shadowOpacity: 0.14,
-            shadowRadius: 34,
-            elevation: 16
-          }}
-        >
-          <View
-            id='postHeader'
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%'
-            }}
-          >
-            <View
-              id='userPic-Name'
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                style={{ width: 45, height: 45, borderRadius: 12 }}
-                source={{
-                  uri:
-                    'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
-                }}
-              />
-              <Text
-                id='userName'
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'Roboto_500Medium',
-                  color: '#191919',
-                  marginHorizontal: 8
-                }}
-              >
-                Rachel Jaimes
-              </Text>
-            </View>
-
-            <Text
-              id='timePosted'
-              style={{
-                fontSize: 14,
-                fontFamily: 'Roboto_400Regular',
-                color: '#191919A8'
-              }}
-            >
-              2h
-            </Text>
-          </View>
-
-          <Text
-            id='postMessage'
-            style={{
-              fontSize: 17,
-              fontFamily: 'Roboto_400Regular',
-              marginTop: 12,
-              width: '100%'
-            }}
-          >
-            Going for a walk again, later this after noon! Who's joining me?
-          </Text>
-
-          <Image
-            style={{
-              width: '100%',
-              height: 204,
-              borderRadius: 16,
-              marginTop: 12
-            }}
-            source={{
-              uri:
-                'https://www.mscareergirl.com/wp-content/uploads/2017/07/pexels-photo1-620x400.jpg'
-            }}
-          />
-
-          <View
-            id='actions'
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              width: '100%',
-              marginTop: 17
-            }}
-          >
-            <View
-              id='like'
-              style={{ flexDirection: 'row', alignItems: 'center' }}
-            >
-              <MaterialCommunityIcons
-                name='heart-outline'
-                size={24}
-                color='#191919'
-              />
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'Roboto_400Regular',
-                  marginLeft: 8,
-                  marginRight: 17
-                }}
-              >
-                12
-              </Text>
-            </View>
-
-            <View
-              id='comment'
-              style={{ flexDirection: 'row', alignItems: 'center' }}
-            >
-              <MaterialCommunityIcons
-                name='message-outline'
-                size={24}
-                color='#191919'
-              />
-              <Text
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'Roboto_400Regular',
-                  marginLeft: 8,
-                  marginRight: 17
-                }}
-              >
-                8
-              </Text>
-            </View>
-          </View>
-        </Pressable>
-      </View>
-
       <Pressable
         id='FAB'
+        onPress={clickFab}
         style={{
           position: 'absolute',
           right: 17,
-          bottom: tabBarHeight + 34,
+          bottom: 17,
           padding: 11,
           backgroundColor: '#395E66',
           borderRadius: 16,
@@ -535,10 +252,156 @@ function HeaderAnnouncements () {
   )
 }
 
-function Post ({ name }) {
+function Post ({ avatar, name, timestamp, message, picture, likes, comments }) {
+  function clickPost () {
+    Alert.alert('Notice', `This is where we would redirect to post's screen`, [
+      { text: 'OK', onPress: () => console.log('OK Pressed') }
+    ])
+  }
   return (
-    <View>
-      <Text>{name}</Text>
-    </View>
+    <Pressable
+      id='postPicture'
+      onPress={clickPost}
+      style={{
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        paddingHorizontal: 17,
+        paddingTop: 17,
+        paddingBottom: 22,
+        marginHorizontal: 17,
+        marginVertical: 9,
+
+        borderRadius: 24,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: -8 },
+        shadowOpacity: 0.14,
+        shadowRadius: 34,
+        elevation: 16
+      }}
+    >
+      <View
+        id='postHeader'
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%'
+        }}
+      >
+        <View
+          id='userPic-Name'
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center'
+          }}
+        >
+          <Image
+            style={{ width: 45, height: 45, borderRadius: 12 }}
+            source={{
+              uri: avatar
+            }}
+          />
+          <Text
+            id='userName'
+            style={{
+              fontSize: 17,
+              fontFamily: 'Roboto_500Medium',
+              color: '#191919',
+              marginHorizontal: 8
+            }}
+          >
+            {name}
+          </Text>
+        </View>
+
+        <Text
+          id='timePosted'
+          style={{
+            fontSize: 14,
+            fontFamily: 'Roboto_400Regular',
+            color: '#191919A8'
+          }}
+        >
+          {timestamp}
+        </Text>
+      </View>
+
+      <Text
+        id='postMessage'
+        style={{
+          fontSize: 17,
+          fontFamily: 'Roboto_400Regular',
+          marginTop: 12,
+          width: '100%'
+        }}
+      >
+        {message}
+      </Text>
+
+      {picture && (
+        <Image
+          style={{
+            width: '100%',
+            height: 204,
+            borderRadius: 16,
+            marginTop: 12
+          }}
+          source={{
+            uri: picture
+          }}
+        />
+      )}
+
+      <View
+        id='actions'
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          width: '100%',
+          marginTop: 17
+        }}
+      >
+        <View id='like' style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <MaterialCommunityIcons
+            name='heart-outline'
+            size={24}
+            color='#191919'
+          />
+          <Text
+            style={{
+              fontSize: 17,
+              fontFamily: 'Roboto_400Regular',
+              marginLeft: 8,
+              marginRight: 17
+            }}
+          >
+            {likes}
+          </Text>
+        </View>
+
+        <View
+          id='comment'
+          style={{ flexDirection: 'row', alignItems: 'center' }}
+        >
+          <MaterialCommunityIcons
+            name='message-outline'
+            size={24}
+            color='#191919'
+          />
+          <Text
+            style={{
+              fontSize: 17,
+              fontFamily: 'Roboto_400Regular',
+              marginLeft: 8,
+              marginRight: 17
+            }}
+          >
+            {comments}
+          </Text>
+        </View>
+      </View>
+    </Pressable>
   )
 }

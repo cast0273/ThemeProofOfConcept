@@ -100,6 +100,7 @@ export default function NewsFeed () {
           </Text>
         </Pressable>
       </View>
+
       <View
         id='feed'
         style={{
@@ -176,6 +177,7 @@ export default function NewsFeed () {
             />
           </View>
         </Pressable>
+
         {/* //post */}
         <Pressable
           id='post'
@@ -251,7 +253,8 @@ export default function NewsFeed () {
             style={{
               fontSize: 17,
               fontFamily: 'Roboto_400Regular',
-              marginTop: 12
+              marginTop: 12,
+              width: '100%'
             }}
           >
             Just went for a walk outside and found a pair of mittens. Does
@@ -366,7 +369,7 @@ export default function NewsFeed () {
                   marginHorizontal: 8
                 }}
               >
-                Adam Grantson
+                Rachel Jaimes
               </Text>
             </View>
 
@@ -378,7 +381,7 @@ export default function NewsFeed () {
                 color: '#191919A8'
               }}
             >
-              30m
+              2h
             </Text>
           </View>
 
@@ -387,11 +390,11 @@ export default function NewsFeed () {
             style={{
               fontSize: 17,
               fontFamily: 'Roboto_400Regular',
-              marginTop: 12
+              marginTop: 12,
+              width: '100%'
             }}
           >
-            Just went for a walk outside and found a pair of mittens. Does
-            anybody recall losing them?
+            Going for a walk again, later this after noon! Who's joining me?
           </Text>
 
           <Image

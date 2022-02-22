@@ -153,7 +153,7 @@ export default function NewsFeed () {
           id='post'
           onPress={clickPost}
           style={{
-            flexDirection: 'row',
+            flexDirection: 'column',
             alignItems: 'center',
             backgroundColor: '#FFFFFF',
             paddingHorizontal: 17,
@@ -173,10 +173,10 @@ export default function NewsFeed () {
           <View
             id='postHeader'
             style={{
-              flex: 1,
               flexDirection: 'row',
               alignItems: 'center',
-              justifyContent: 'space-between'
+              justifyContent: 'space-between',
+              width: '100%'
             }}
           >
             <View
@@ -216,6 +216,71 @@ export default function NewsFeed () {
             >
               30m
             </Text>
+          </View>
+
+          <Text
+            id='postMessage'
+            style={{
+              fontSize: 17,
+              fontFamily: 'Roboto_400Regular',
+              marginTop: 12
+            }}
+          >
+            Just went for a walk outside and found a pair of mittens. Does
+            anybody recall losing them?
+          </Text>
+
+          <View
+            id='actions'
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              width: '100%',
+              marginTop: 17
+            }}
+          >
+            <View
+              id='like'
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
+              <MaterialCommunityIcons
+                name='heart-outline'
+                size={24}
+                color='#191919'
+              />
+              <Text
+                style={{
+                  fontSize: 17,
+                  fontFamily: 'Roboto_400Regular',
+                  marginLeft: 8,
+                  marginRight: 17
+                }}
+              >
+                12
+              </Text>
+            </View>
+
+            <View
+              id='comment'
+              style={{ flexDirection: 'row', alignItems: 'center' }}
+            >
+              <MaterialCommunityIcons
+                name='message-outline'
+                size={24}
+                color='#191919'
+              />
+              <Text
+                style={{
+                  fontSize: 17,
+                  fontFamily: 'Roboto_400Regular',
+                  marginLeft: 8,
+                  marginRight: 17
+                }}
+              >
+                8
+              </Text>
+            </View>
           </View>
         </Pressable>
       </View>

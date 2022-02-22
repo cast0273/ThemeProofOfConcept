@@ -9,6 +9,7 @@ import {
   Platform,
   Image
 } from 'react-native'
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
 const posts = [
@@ -40,6 +41,8 @@ const posts = [
 ]
 
 export default function NewsFeed () {
+  const tabBarHeight = useBottomTabBarHeight()
+
   function chooseBuilding () {
     Alert.alert(
       'Notice',
@@ -464,6 +467,26 @@ export default function NewsFeed () {
           </View>
         </Pressable>
       </View>
+
+      <Pressable
+        id='FAB'
+        style={{
+          position: 'absolute',
+          right: 17,
+          bottom: tabBarHeight + 34,
+          padding: 11,
+          backgroundColor: '#395E66',
+          borderRadius: 16,
+
+          shadowColor: 'black',
+          shadowOffset: { width: 0, height: -8 },
+          shadowOpacity: 0.14,
+          shadowRadius: 34,
+          elevation: 16
+        }}
+      >
+        <MaterialCommunityIcons name='plus' size={36} color='white' />
+      </Pressable>
     </SafeAreaView>
   )
 }

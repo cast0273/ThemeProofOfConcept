@@ -11,6 +11,34 @@ import {
 } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 
+const posts = [
+  {
+    id: 'p1',
+    avatar:
+      'https://images.unsplash.com/photo-1598411072028-c4642d98352c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80',
+    name: 'Adam Grantson',
+    timestamp: '30m',
+    message:
+      'Just went for a walk outside and found a pair of mittens. Does anybody recall losing them?',
+    picture: null,
+    likes: 12,
+    comments: 8
+  },
+  {
+    id: 'p2',
+    avatar:
+      'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    name: 'Rachel Jaimes',
+    timestamp: '2h',
+    message:
+      'Just went for a walk outside and found a pair of mittens. Does anybody recall losing them?',
+    picture:
+      'https://www.mscareergirl.com/wp-content/uploads/2017/07/pexels-photo1-620x400.jpg',
+    likes: 12,
+    comments: 8
+  }
+]
+
 export default function NewsFeed () {
   function chooseBuilding () {
     Alert.alert(
